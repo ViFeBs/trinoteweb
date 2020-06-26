@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterLog.master.cs" Inherits="MasterLog" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content ="IE-edge"/>
+    <meta name="viewport" content="width = device-width, intial-scale = 1"/>
+    <script src="JQ/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/MyStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/Style.css"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet"/> 
+    <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet"/> 
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet"/> 
+    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Notable&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Pinyon+Script&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Ruge+Boogie&display=swap" rel="stylesheet"/>      
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <nav id="sidebar" runat="server">
+                <div id="header" class="sidebar-header" runat="server">
+                    <asp:Image ID="imgPerfil" runat="server" Width="100px" Height="80px" CssClass="rounded-circle"/>
+                    <asp:Label ID="lblPname" runat="server" Text="Nome do Usuario" Font-Size="20px"></asp:Label>
+                    <a href="Perfil.aspx" class="nav-link btn btn-outline-light btn-sm">Ver Perfil</a>
+                </div>
+                <p>Lista de Amigos 
+                    <a href="Adicionar_Amigo.aspx">
+                        <img src="Images/addFriend.png" Width="40px" Height="40px"/>
+                    </a>
+                </p>
+                <div id="lstAmigos" runat="server">
+                </div>
+                <ul class="list-unstyled components" id="SolicitacoesRecebidas" runat="server">
+                      
+                </ul>
+                <ul class="list-unstyled components" id="friendlist" runat="server">
+                      
+                </ul>
+                <ul class="list-unstyled components" id="SolicitacoesEnviadas" runat="server">
+                      
+                </ul>
+                
+            </nav>
+        
+            <main class="main">
+            <nav class ="navbar navbar-expand-xl navbar-dark bg-dark">
+                <ul class ="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="HomeLog.aspx" class="nav-link">
+                            <asp:Image ID="Image1" runat="server" CssClass="navbar-nav" ImageUrl="~/Images/homeIcon.png" Width="40px" Height="40px" />
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <asp:Image ID="imgNot" runat="server" CssClass="navbar-nav" ImageUrl="~/Images/Notificacao.png" Width="40px" Height="40px"  Title="Notificações"/>
+                    </li>
+                    <li class="nav-item"><a href="Solicitacoes.aspx" class="nav-link">
+                        <asp:Image ID="imgFC" runat="server" CssClass="navbar-nav" ImageUrl="~/Images/fale_Conosco.png" Width="40px" Height="40px"  Title="Fale Conosco Via Chat"/>
+                        </a></li>
+                    <li class="nav-item">
+                        <asp:ImageButton ID="imgLogOff" runat="server" ImageUrl="~/Images/logOff.png" OnClick="imgLogOff_Click" Width="40px" Height="40px"/>
+                    </li>
+                    </ul>
+                </nav>
+                <h2 class="text-center" runat="server" id="AnuncioTitulo">Anúncios</h2>
+                <div class="card-columns">
+                    <div id="mostraAnun" runat="server">
+
+                    </div>
+                </div>
+                <div id="content">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div> 
+            </main>
+         </div>
+    </form>
+</body>
+</html>
