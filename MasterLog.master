@@ -33,7 +33,7 @@
             <nav id="sidebar" runat="server">
                 <div id="header" class="sidebar-header" runat="server">
                     <asp:Image ID="imgPerfil" runat="server" Width="100px" Height="80px" CssClass="rounded-circle"/>
-                    <asp:Label ID="lblPname" runat="server" Text="Nome do Usuario" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="lblPname" runat="server" Text="Nome do Usuario" Font-Size="15px"></asp:Label>
                     <a href="Perfil.aspx" class="nav-link btn btn-outline-light btn-sm">Ver Perfil</a>
                 </div>
                 <p>Lista de Amigos 

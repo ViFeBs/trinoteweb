@@ -24,7 +24,7 @@ public partial class MasterLog : System.Web.UI.MasterPage
     {
         Conexao c = new Conexao();
         c.conectar();
-        c.command.CommandText = "select loginUsuario,foto from Usuario where idUsuario = @cod";
+        c.command.CommandText = "select nomeUsuario,foto from Usuario where idUsuario = @cod";
         c.command.Parameters.Add("@cod", SqlDbType.Int).Value = ((int)Session["codigoUsuario"]);
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -42,7 +42,7 @@ public partial class MasterLog : System.Web.UI.MasterPage
         string strBase64 = Convert.ToBase64String(imgBytes);
         imgPerfil.ImageUrl = "data:Images/jpg;base64," + strBase64;
         //------------------------------------------------------------------
-        lblPname.Text = dt.Tables[0].DefaultView[0].Row["loginUsuario"].ToString();
+        lblPname.Text = dt.Tables[0].DefaultView[0].Row["nomeUsuario"].ToString();
         c.fechaConexao();
     }
     public void CarregaAmigoSolicitado()

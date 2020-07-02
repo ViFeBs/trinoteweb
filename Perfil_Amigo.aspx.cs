@@ -104,24 +104,35 @@ public partial class Perfil_Amigo : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
         int qtde = dt.Tables[0].DefaultView.Count;
-        for(int i = 0; i < qtde; i++)
+        if (qtde > 1)
         {
-            string Titulo = dt.Tables[0].DefaultView[i].Row["titulo"].ToString();
-            string conteudo = dt.Tables[0].DefaultView[i].Row["conteudo"].ToString();
-            byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[i].Row["Imagem"];
-            string strBase64 = Convert.ToBase64String(imgBytes);
-            string id = dt.Tables[0].DefaultView[i].Row["idAnotacao"].ToString();
-            string Fonte = "";
-            if (dt.Tables[0].DefaultView[i].Row["Font"].ToString() == "")
+            for (int i = 0; i < qtde; i++)
             {
-                Fonte = "'Arial'";
+                string Titulo = dt.Tables[0].DefaultView[i].Row["titulo"].ToString();
+                string conteudo = dt.Tables[0].DefaultView[i].Row["conteudo"].ToString();
+                byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[i].Row["Imagem"];
+                string strBase64 = Convert.ToBase64String(imgBytes);
+                string id = dt.Tables[0].DefaultView[i].Row["idAnotacao"].ToString();
+                string Fonte = "";
+                if (dt.Tables[0].DefaultView[i].Row["Font"].ToString() == "")
+                {
+                    Fonte = "'Arial'";
+                }
+                else
+                {
+                    Fonte = dt.Tables[0].DefaultView[i].Row["Font"].ToString();
+                }
+                string anunAtual = "<div class='card'><style>.card-img-top{width='100%'; height: 225;} #id" + i + "{font-family:" + Fonte + "} #idt" + i + "{font-family:" + Fonte + "}</style><img src='data:Images/jpg;base64," + strBase64 + "'class='card-img-top'/><div class='card-body'><h1 class='card-title' id='idt" + i + "'>" + Titulo + "</h1><br /><p class='card-text' id='id" + i + "'>" + conteudo + "</p><br /><a href = 'Anotacao_Compartilhada.aspx?id=" + id + "' class='btn btn-primary'>Ver Mais</a></div></div>";
+                GeraAnotacao.InnerHtml += anunAtual;
             }
-            else
-            {
-                Fonte = dt.Tables[0].DefaultView[i].Row["Font"].ToString();
-            }
-            string anunAtual = "<div class='card'><style>.card-img-top{width='100%'; height: 225;} #id" + i + "{font-family:" + Fonte + "} #idt" + i + "{font-family:" + Fonte + "}</style><img src='data:Images/jpg;base64," + strBase64 + "'class='card-img-top'/><div class='card-body'><h1 class='card-title' id='idt" + i + "'>" + Titulo + "</h1><br /><p class='card-text' id='id" + i + "'>" + conteudo + "</p><br /><a href = 'Anotacao_Compartilhada.aspx?id=" + id + "' class='btn btn-primary'>Ver Mais</a></div></div>";
-            GeraAnotacao.InnerHtml += anunAtual;
+            nadaEncontrado.Visible = false;
+        }
+        else
+        {
+            nadaEncontrado.InnerHtml =  "<div class='container'>"+
+                                            "<h1 class='display-4'>Não encontramos nenhuma anotação<i class='fas fa-sad-tear'></i></h1>"+
+                                            "<p class='lead'>Seu Amigo ainda não compartilhou nada com você</p>" +
+                                        "</div>";
         }
     }
 
