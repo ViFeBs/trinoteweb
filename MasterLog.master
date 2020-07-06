@@ -32,13 +32,13 @@
         <div class="wrapper">
             <nav id="sidebar" runat="server">
                 <div id="header" class="sidebar-header" runat="server">
-                    <asp:Image ID="imgPerfil" runat="server" Width="100px" Height="80px" CssClass="rounded-circle"/>
-                    <asp:Label ID="lblPname" runat="server" Text="Nome do Usuario" Font-Size="15px"></asp:Label>
+                    <asp:Image ID="imgPerfil" runat="server" Width="80px" Height="80px" CssClass="rounded-circle"/>
+                    <asp:Label ID="lblPname" runat="server" Text="Nome do Usuário" Font-Size="14px"></asp:Label>
                     <a href="Perfil.aspx" class="nav-link btn btn-outline-light btn-sm">Ver Perfil</a>
                 </div>
                 <p>Lista de Amigos 
                     <a href="Adicionar_Amigo.aspx">
-                        <img src="Images/addFriend.png" Width="40px" Height="40px"/>
+                        <img src="Images/addFriend.png" width="40" height="40" title="Adicionar Amigo"/>
                     </a>
                 </p>
                 <div id="lstAmigos" runat="server">
@@ -60,7 +60,7 @@
                 <ul class ="nav navbar-nav ml-auto">
                     <li class="nav-item">
                         <a href="HomeLog.aspx" class="nav-link">
-                            <asp:Image ID="Image1" runat="server" CssClass="navbar-nav" ImageUrl="~/Images/homeIcon.png" Width="40px" Height="40px" />
+                            <asp:Image ID="Image1" runat="server" CssClass="navbar-nav" ImageUrl="~/Images/homeIcon.png" Width="40px" Height="40px" Title="Página Inicial"/>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -70,7 +70,7 @@
                         <asp:Image ID="imgFC" runat="server" CssClass="navbar-nav" ImageUrl="~/Images/fale_Conosco.png" Width="40px" Height="40px"  Title="Fale Conosco Via Chat"/>
                         </a></li>
                     <li class="nav-item">
-                        <asp:ImageButton ID="imgLogOff" runat="server" ImageUrl="~/Images/logOff.png" OnClick="imgLogOff_Click" Width="40px" Height="40px"/>
+                        <asp:ImageButton ID="imgLogOff" runat="server" ImageUrl="~/Images/logOff.png" OnClick="imgLogOff_Click" Width="40px" Height="40px" Title="Sair"/>
                     </li>
                     </ul>
                 </nav>

@@ -54,17 +54,18 @@ public partial class Perfil : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        //Abilitar Items De Edição
+        //Habilitar Itens De Edição
         txtNome.Visible = true;
         txtEmail.Visible = true;
         txtTel.Visible = true;
         fupImg.Visible = true;
         btnEdit.Visible = true;
 
-        //Desablitar Items de Visulalização
+        //Desabilitar Itens de Visualização
         lblNome.Visible = false;
         lblEmail.Visible = false;
         lblTel.Visible = false;
+        imgedit.Visible = false;
 
         //Caregar Items De Edição
         txtNome.Text = dt.Tables[0].DefaultView[0].Row["nomeUsuario"].ToString();

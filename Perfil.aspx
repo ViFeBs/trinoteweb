@@ -13,15 +13,22 @@
                      <asp:ImageButton ID="imgedit" runat="server" ImageUrl="~/Images/Editar.jpg" Width="40px" Height="40px" OnClick="imgedit_Click"/> 
                 </div>
                 <h5>Dados Pessoais:</h5>
+                Nome:
                 <asp:Label ID="lblNome" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtNome" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtNome" runat="server" Width="240px"></asp:TextBox>
+
+                <br />
+                E-mail:
 
                 <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="txtEmail" runat="server" Width="220px"></asp:TextBox>
+          
+
+                &nbsp;&nbsp;&nbsp; Telefone:
           
 
                 <asp:Label ID="lblTel" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtTel" runat="server"></asp:TextBox><br />
+                <asp:TextBox ID="txtTel" runat="server" Width="140px"></asp:TextBox><br />
                 <br />
             </div>
             <asp:Button ID="btnEdit" runat="server" Text="Salvar Edição" CssClass="btn btn-success" OnClick="btnEdit_Click"/>

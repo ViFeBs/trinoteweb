@@ -14,7 +14,7 @@
                 <h1 class="jumbotron-heading">Login Para Anunciantes</h1>
             </div>
         </div>
-        <asp:Label ID="Label1" runat="server" Text="Nome: "></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Login: "></asp:Label>
         <asp:TextBox ID="txtNome" runat="server"></asp:TextBox><br />
         <br />
         <asp:Label ID="Label2" runat="server" Text="Senha: "></asp:Label>
@@ -23,7 +23,7 @@
         <asp:Button ID="btnLog" runat="server" Text="Logar" OnClick="btnLog_Click"  CssClass="btn btn-primary"/>
         <br />
         <br />
-        <a href="Anuncie.aspx">Não possui Login? Crie um agora, clique aqui./a>
+        <a href="Anuncie.aspx">Anunciante, não possui Login? Crie um agora, clique aqui.</a>
     </div>
 </asp:Content>
 

@@ -17,7 +17,7 @@
         <asp:Button ID="btnLog" runat="server" Text="Logar" OnClick="btnLog_Click"  CssClass="btn btn-primary"/>
         <br />
         <br />
-        <a href="Criar_Login.aspx">Não possui Login? Crie um agora, clique aqui</a>.
+        <a href="Criar_Login.aspx">Não possui login? Crie um agora, clique aqui.</a>
     </div>
 </asp:Content>
 

@@ -13,7 +13,7 @@ public partial class index : System.Web.UI.Page
     {
         if (Convert.ToInt32(Request.QueryString["cod"]) == 1)
         {
-            Response.Write("<script language = 'javascript'>alert('Cadastro Realizado com sucesso!');</script>");
+            Response.Write("<script language = 'javascript'>alert('Cadastro realizado com sucesso!');</script>");
         }
     }
 

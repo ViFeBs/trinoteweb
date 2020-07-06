@@ -46,9 +46,9 @@
     </style>
     <h1 class="text-center">Minha Anotação</h1>
     <div class="text-right">
-         <asp:ImageButton ID="imgBedit" runat="server" ImageUrl="~/Images/Editar.jpg" Width="40px" Height="40px" OnClick="imgBedit_Click"/> 
-         <asp:ImageButton ID="imgBdelet" runat="server" ImageUrl="~/Images/Deletar.png" Width="40px" Height="40px" OnClick="imgBdelet_Click"/>
-    <asp:ImageButton ID="imgBshare" runat="server"  ImageUrl="~/Images/Compartilhar.png.jpg" Width="40px" Height="40px" OnClick="imgBshare_Click"/>
+         <asp:ImageButton ID="imgBedit" runat="server" ImageUrl="~/Images/Editar.jpg" Width="40px" Height="40px" OnClick="imgBedit_Click" ToolTip="Editar"/> 
+         <asp:ImageButton ID="imgBdelet" runat="server" ImageUrl="~/Images/Deletar.png" Width="40px" Height="40px" OnClick="imgBdelet_Click" ToolTip="Excluir"/>
+    <asp:ImageButton ID="imgBshare" runat="server"  ImageUrl="~/Images/Compartilhar.png.jpg" Width="40px" Height="40px" OnClick="imgBshare_Click" ToolTip="Compartilhar"/>
     </div>
     <div class="items-margin">
         <asp:Image ID="Image1" runat="server" Width="1000" Height="500"/><br />

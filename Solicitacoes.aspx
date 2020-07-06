@@ -33,7 +33,7 @@
     </div>
     <section id="content" class ="Alinhamento">
         <article class="btn btn-dark">
-            <div class="btn func">Fazer Uma Solicitação</div>
+            <div class="btn func">Fazer uma Solicitação</div>
             <div class="box">
                 <div class="Alinhamento">
                     <h2>Motivo: </h2><br />
@@ -41,7 +41,7 @@
                     <asp:RadioButton ID="rdnBug" runat="server" GroupName="grpMotivo" Text="Reportar Bug" />
                     <asp:RadioButton ID="rdnOutro" runat="server" GroupName="grpMotivo" Text="Outro" /><br />
                     <br />
-                    <asp:TextBox ID="txtMensagem" runat="server" Placeholder="Especifique o Motivo com Poucas palavras Maximo(50 Caracteres)" Width="455px"></asp:TextBox>
+                    <asp:TextBox ID="txtMensagem" runat="server" Placeholder="Especifique o Motivo em poucas palavras (máximo de 50 caracteres)." Width="455px"></asp:TextBox>
                     <br />
                     <asp:Button ID="btnEnv" runat="server" Text="Enviar" OnClick="btnEnv_Click" CssClass="btn btn-success"/><br />
                     <br />

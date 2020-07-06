@@ -12,9 +12,9 @@
         <div class="container">
             <h1 class="jumbotron-heading">Criar Login</h1>
             <p class="lead text-muted">
-                Olá anunciante,a tri note oferece uma plataforma de anuncios simples e pratico para você
-                Basta Cadastrar Suas informações Adcionar um login e senha e pronto,você podera enviar propostas de anuncio
-                para o nosso site,você tambem terá acesso a uma página onde poderá ver seus anuncios ativos e propostas suas propostas enviadas.
+                Olá anunciante, a TriNote oferece uma plataforma de anúncios simples e prática para você.
+                Basta cadastrar suas informações, adicionar um login e senha e pronto, você podera enviar propostas de anúncio
+                para o nosso site, você tambem terá acesso a uma página onde poderá ver seus anúncios ativos e propostas suas enviadas.
             </p>
         </div>
     </div>
@@ -37,7 +37,7 @@
                 <asp:Label ID="Label4" runat="server" Text="Senha: "></asp:Label>
                 <asp:TextBox ID="txtSen" runat="server" TextMode="Password"></asp:TextBox><br />
                 <br />
-                <asp:Label ID="Label5" runat="server" Text="Confirmar Senha: "></asp:Label>
+                <asp:Label ID="Label5" runat="server" Text="Confirmar senha: "></asp:Label>
                 <asp:TextBox ID="txtConsen" runat="server" TextMode="Password"></asp:TextBox>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="btnSend" runat="server"  Text="Cadastrar-se" OnClick="btnSend_Click1" CssClass="btn btn-primary"/>

@@ -35,7 +35,7 @@
         <asp:Label ID="Label4" runat="server" Text="Adicionar Imagem: "></asp:Label><br />
         <asp:FileUpload ID="FileUpload1" runat="server" /><br />
 
-        <asp:Label ID="Label1" runat="server" Text="Titulo: "></asp:Label><br />
+        <asp:Label ID="Label1" runat="server" Text="Título: "></asp:Label><br />
         <asp:TextBox ID="txtTitulo" runat="server" Width="754px"></asp:TextBox><br />
 
         <asp:Label ID="Label2" runat="server" Text="Anotação: "></asp:Label><br />

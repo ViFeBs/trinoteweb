@@ -8,7 +8,7 @@
         <br />
         <br />
         <br />
-        <asp:Label ID="Label3" runat="server" Text="Foto de Perfil (Opcional): "></asp:Label><br />
+        <asp:Label ID="Label3" runat="server" Text="Foto de Perfil (opcional): "></asp:Label><br />
         <br />
         <asp:FileUpload ID="FileUpload1" runat="server" /><br />
         <br />
@@ -32,7 +32,7 @@
         <asp:Label ID="Label6" runat="server" Text="Confirmar Senha: "></asp:Label>
         <asp:TextBox ID="txtCsenha" runat="server" TextMode="Password"></asp:TextBox><br />
         <br />
-        <p>Para utilizar nosso site é necessário aceitar nossos termos de uso: 
+        <p>Para utilizar nosso site é necessário aceitar nossos Termos de Uso: 
             <a href="#">Termos de Privacidade</a> e <a href="#">Termos de Uso</a><br />
             <asp:CheckBox ID="ChkTermos" runat="server" Text="Aceitar" />
         </p>
