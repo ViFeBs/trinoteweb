@@ -143,7 +143,7 @@ public partial class MasterLog : System.Web.UI.MasterPage
                                                     "<p>" + nome + "</p>" +
                                                 "</span>" +
                                                 "<div class='bottonbtn'>" +
-                                                    "<p>Anotações \n"+
+                                                    "<p>Anotações <br />" +
                                                     "Compartilhadas:" + NotesShared + "</p>" +
                                                 "</div>" +
                                             "</div>" +

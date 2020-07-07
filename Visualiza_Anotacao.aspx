@@ -4,6 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <style>
+        #conteudo{
+            width: 700px;
+            margin:auto;
+        }
         .items-margin{
             margin-left:50px;
         }
@@ -48,21 +52,40 @@
     <div class="text-right">
          <asp:ImageButton ID="imgBedit" runat="server" ImageUrl="~/Images/Editar.jpg" Width="40px" Height="40px" OnClick="imgBedit_Click"/> 
          <asp:ImageButton ID="imgBdelet" runat="server" ImageUrl="~/Images/Deletar.png" Width="40px" Height="40px" OnClick="imgBdelet_Click"/>
-    <asp:ImageButton ID="imgBshare" runat="server"  ImageUrl="~/Images/Compartilhar.png.jpg" Width="40px" Height="40px" OnClick="imgBshare_Click"/>
-    </div>
-    <div class="items-margin">
-        <asp:Image ID="Image1" runat="server" Width="1000" Height="500"/><br />
+         <asp:ImageButton ID="imgBshare" runat="server"  ImageUrl="~/Images/Compartilhar.png.jpg" Width="40px" Height="40px" OnClick="imgBshare_Click"/><br />
         <br />
+        <div id="editFont" runat="server">
+            <asp:Label ID="Label3" runat="server" Text="Font: "></asp:Label>
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem>Classica</asp:ListItem>
+                <asp:ListItem>Amatic SC</asp:ListItem>
+                <asp:ListItem>Sacramento</asp:ListItem>
+                <asp:ListItem>Dancing Script</asp:ListItem>
+                <asp:ListItem>Press Start 2P</asp:ListItem>
+                <asp:ListItem>Tangerine</asp:ListItem>
+                <asp:ListItem>Notable</asp:ListItem>
+                <asp:ListItem>Reenie Beanie</asp:ListItem>
+                <asp:ListItem>Pinyon Script</asp:ListItem>
+                <asp:ListItem>Ruge Boogie</asp:ListItem>
+            </asp:DropDownList><br />
+            <asp:Label ID="lblFont" runat="server" Font-Size="12px" Text="ABCDEFGHIJKLMNOPQRSŠTUVWXYZŽ <br /> abcdefghijklmnopqrsštuvwxyzž <br /> 1234567890 <br /> ‘?’“!”(%)[#]{@}/&\<-+÷×=>®©$€£¥¢:;,.*"></asp:Label>
+        </div>
+    </div>
+    <br />
+    <div class="text-center">
         <h1>Titulo:
             <asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label>
             <asp:TextBox ID="txtTitulo" runat="server"></asp:TextBox>
         </h1><br />
+        <asp:Image ID="imgAno" runat="server" Width="1000" Height="500"/><br />
+        <br />
+        <p id="imgEdit" runat="server">Alterar Imagem: <asp:FileUpload ID="fupImg" runat="server" /></p>
         <h2>Conteudo:</h2>
-        <p>
-            <asp:Label ID="lblConteudo" runat="server" Text=""></asp:Label>
-            <asp:TextBox ID="txtConteudo" runat="server" Height="166px" TextMode="MultiLine" Width="321px"></asp:TextBox>
-        </p>
-        <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-primary" OnClick="btnSalvar_Click"/>
+        <div id="conteudo">
+            <asp:Label ID="lblConteudo" runat="server" Text="" CssClass="text-center"></asp:Label>
+            <asp:TextBox ID="txtConteudo" runat="server" Height="166px" TextMode="MultiLine" Width="610px"></asp:TextBox>
+        </div>
+        <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-outline-primary" OnClick="btnSalvar_Click" Height="44px" Width="193px"/>
         <div id="myModal" class="Boxshare" runat="server">
             <div class="share-content">
                 <asp:Button ID="btnclose" runat="server" Text="&times;" CssClass="close" OnClick="btnclose_Click"/>

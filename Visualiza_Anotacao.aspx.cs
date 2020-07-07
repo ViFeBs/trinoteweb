@@ -10,14 +10,17 @@ using System.Web.UI.WebControls;
 public partial class Visualiza_Anotacao : System.Web.UI.Page
 {
     int IdAmigo;
+    static string fonte;
     protected void Page_Load(object sender, EventArgs e)
     {
         txtConteudo.Visible = false;
         txtTitulo.Visible = false;
-        btnSalvar.Visible = false;   
-        CarregaPagina();
+        btnSalvar.Visible = false;
+        imgEdit.Visible = false;
+        editFont.Visible = false;   
         if (!IsPostBack)
         {
+            CarregaPagina();
             myModal.Visible = false;
             BuscaAmigoSolicitado();
             BuscaAmigoAceito();
@@ -25,7 +28,6 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
     }
     public void CarregaPagina()
     {
-        string Fonte = "";
         Conexao c = new Conexao();
         c.conectar();
         c.command.CommandText = "select titulo,conteudo,Imagem,Font from Anotacao where idAnotacao = @cod";
@@ -36,23 +38,22 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
         dAdapter.Fill(dt);
         byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
         string strBase64 = Convert.ToBase64String(imgBytes);
-        Image1.ImageUrl = "data:Images/jpg;base64," + strBase64;
+        imgAno.ImageUrl = "data:Images/jpg;base64," + strBase64;
         lblTitulo.Text = dt.Tables[0].DefaultView[0].Row["titulo"].ToString();
         lblConteudo.Text = dt.Tables[0].DefaultView[0].Row["conteudo"].ToString();
         if(dt.Tables[0].DefaultView[0].Row["Font"].ToString() == null)
         {
-            Fonte = "Arial";
+            fonte = "Arial";
         }
         else
         {
-            Fonte = dt.Tables[0].DefaultView[0].Row["Font"].ToString();
+            fonte = dt.Tables[0].DefaultView[0].Row["Font"].ToString();
         }
-        lblConteudo.Font.Name = Fonte;
-        lblTitulo.Font.Name = Fonte;
+        lblConteudo.Font.Name = fonte;
+        lblTitulo.Font.Name = fonte;
     }
     public void CarregaEdição()
     {
-        string Fonte = "";
         Conexao c = new Conexao();
         c.conectar();
         c.command.CommandText = "select titulo,conteudo,Imagem,Font from Anotacao where idAnotacao = @cod";
@@ -61,24 +62,25 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
         DataSet dt = new DataSet();
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
+
         byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
         string strBase64 = Convert.ToBase64String(imgBytes);
-        Image1.ImageUrl = "data:Images/jpg;base64," + strBase64;
+        imgAno.ImageUrl = "data:Images/jpg;base64," + strBase64;
+
         txtConteudo.Visible = true;
         txtTitulo.Visible = true;
         btnSalvar.Visible = true;
+        editFont.Visible = true;
+        imgEdit.Visible = true;
+
         txtTitulo.Text = dt.Tables[0].DefaultView[0].Row["titulo"].ToString();
         txtConteudo.Text = dt.Tables[0].DefaultView[0].Row["conteudo"].ToString();
-        if (dt.Tables[0].DefaultView[0].Row["Font"].ToString() == null)
-        {
-            Fonte = "Arial";
-        }
-        else
-        {
-            Fonte = dt.Tables[0].DefaultView[0].Row["Font"].ToString();
-        }
-        txtConteudo.Font.Name = Fonte;
-        txtTitulo.Font.Name = Fonte;
+
+        txtConteudo.Font.Name = fonte;
+        txtTitulo.Font.Name = fonte;
+        lblFont.Font.Name = fonte;
+
+
     }
     public void Deletar()
     {
@@ -202,18 +204,52 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
 
     protected void btnSalvar_Click(object sender, EventArgs e)
     {
-        //update Anotacao set titulo = '' where idAnotacao = 2 
-        Conexao c = new Conexao();
-        c.conectar();
-        c.command.CommandText = "update Anotacao set titulo = @tit where idAnotacao = @cod";
-        c.command.Parameters.Add("@cod", SqlDbType.Int).Value = Convert.ToInt32(Request.QueryString["id"]);
-        c.command.Parameters.Add("@tit", SqlDbType.VarChar).Value = txtTitulo.Text;
-        c.command.ExecuteNonQuery();
+        if (fupImg.HasFile)
+        {
+            //"Pegando" a Imagem
+            int length = fupImg.PostedFile.ContentLength;
+            byte[] imgbyte = new byte[length];
+            HttpPostedFile img = fupImg.PostedFile;
+            img.InputStream.Read(imgbyte, 0, length);
 
-        c.command.CommandText = "update Anotacao set conteudo = @con where idAnotacao = @cod";
-        c.command.Parameters.Add("@con", SqlDbType.VarChar).Value = txtConteudo.Text;
-        c.command.ExecuteNonQuery();
-        Response.Redirect("Visualiza_Anotacao.aspx?id=" + Convert.ToInt32(Request.QueryString["id"]));
+            Conexao c = new Conexao();
+            c.conectar();
+            c.command.CommandText = "update Anotacao set titulo = @tit where idAnotacao = @cod";
+            c.command.Parameters.Add("@cod", SqlDbType.Int).Value = Convert.ToInt32(Request.QueryString["id"]);
+            c.command.Parameters.Add("@tit", SqlDbType.VarChar).Value = txtTitulo.Text;
+            c.command.ExecuteNonQuery();
+
+            c.command.CommandText = "update Anotacao set Font = @font where idAnotacao = @cod";
+            c.command.Parameters.Add("@font", SqlDbType.VarChar).Value = fonte;
+            c.command.ExecuteNonQuery();
+
+            c.command.CommandText = "update Anotacao set Imagem = @img where idAnotacao = @cod";
+            c.command.Parameters.Add("@img", SqlDbType.VarBinary).Value = imgbyte;
+            c.command.ExecuteNonQuery();
+
+            c.command.CommandText = "update Anotacao set conteudo = @con where idAnotacao = @cod";
+            c.command.Parameters.Add("@con", SqlDbType.VarChar).Value = txtConteudo.Text;
+            c.command.ExecuteNonQuery();
+            Response.Redirect("Visualiza_Anotacao.aspx?id=" + Convert.ToInt32(Request.QueryString["id"]));
+        }
+        else
+        {
+            Conexao c = new Conexao();
+            c.conectar();
+            c.command.CommandText = "update Anotacao set titulo = @tit where idAnotacao = @cod";
+            c.command.Parameters.Add("@cod", SqlDbType.Int).Value = Convert.ToInt32(Request.QueryString["id"]);
+            c.command.Parameters.Add("@tit", SqlDbType.VarChar).Value = txtTitulo.Text;
+            c.command.ExecuteNonQuery();
+
+            c.command.CommandText = "update Anotacao set Font = @font where idAnotacao = @cod";
+            c.command.Parameters.Add("@font", SqlDbType.VarChar).Value = fonte;
+            c.command.ExecuteNonQuery();
+
+            c.command.CommandText = "update Anotacao set conteudo = @con where idAnotacao = @cod";
+            c.command.Parameters.Add("@con", SqlDbType.VarChar).Value = txtConteudo.Text;
+            c.command.ExecuteNonQuery();
+            Response.Redirect("Visualiza_Anotacao.aspx?id=" + Convert.ToInt32(Request.QueryString["id"]));
+        }
     }
 
     protected void imgBdelet_Click(object sender, ImageClickEventArgs e)
@@ -230,5 +266,81 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
     protected void btnclose_Click(object sender, EventArgs e)
     {
         myModal.Visible = false;
+    }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DropDownList1.SelectedValue == "Amatic SC")
+        {
+            txtTitulo.Font.Name = "Amatic SC";
+            txtConteudo.Font.Name = "Amatic SC";
+            lblFont.Font.Name = "Amatic SC";
+            fonte = "Amatic SC";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Sacramento")
+        {
+            txtTitulo.Font.Name = "Sacramento";
+            txtConteudo.Font.Name = "Sacramento";
+            lblFont.Font.Name = "Sacramento";
+            fonte = "Sacramento";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Dancing Script")
+        {
+            txtTitulo.Font.Name = "Dancing Script";
+            txtConteudo.Font.Name = "Dancing Script";
+            lblFont.Font.Name = "Dancing Script";
+            fonte = "Dancing Script";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Press Start 2P")
+        {
+            txtTitulo.Font.Name = "Press Start 2P";
+            txtConteudo.Font.Name = "Press Start 2P";
+            lblFont.Font.Name = "Press Start 2P";
+            fonte = "Press Start 2P";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Tangerine")
+        {
+            txtTitulo.Font.Name = "Tangerine";
+            txtConteudo.Font.Name = "Tangerine";
+            lblFont.Font.Name = "Tangerine";
+            fonte = "Tangerine";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Notable")
+        {
+            txtTitulo.Font.Name = "Notable";
+            txtConteudo.Font.Name = "Notable";
+            lblFont.Font.Name = "Notable";
+            fonte = "Notable";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Reenie Beanie")
+        {
+            txtTitulo.Font.Name = "Reenie Beanie";
+            txtConteudo.Font.Name = "Reenie Beanie";
+            lblFont.Font.Name = "Reenie Beanie";
+            fonte = "Reenie Beanie";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Pinyon Script")
+        {
+            txtTitulo.Font.Name = "Pinyon Script";
+            txtConteudo.Font.Name = "Pinyon Script";
+            lblFont.Font.Name = "Pinyon Script";
+            fonte = "Pinyon Script";
+            CarregaEdição();
+        }
+        else if (DropDownList1.SelectedValue == "Ruge Boogie")
+        {
+            txtTitulo.Font.Name = "Ruge Boogie";
+            txtConteudo.Font.Name = "Ruge Boogie";
+            lblFont.Font.Name = "Ruge Boogie";
+            fonte = "Ruge Boogie";
+            CarregaEdição();
+        }
     }
 }

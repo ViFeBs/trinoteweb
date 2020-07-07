@@ -104,7 +104,7 @@ public partial class Perfil_Amigo : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
         int qtde = dt.Tables[0].DefaultView.Count;
-        if (qtde > 1)
+        if (qtde >= 1)
         {
             for (int i = 0; i < qtde; i++)
             {
