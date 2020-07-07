@@ -10,7 +10,7 @@
         }
     </style>
     <h1>Buscar Amigo :)</h1>
-    <asp:TextBox ID="txtBusca" runat="server" hint="Nome do Usuario"></asp:TextBox>
+    <asp:TextBox ID="txtBusca" runat="server" hint="Nome do Usuário"></asp:TextBox>
     <asp:Button ID="btnBusca" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btnBusca_Click"/>
     <div class="card-columns">
         <div runat="server" id="lstAmigos">

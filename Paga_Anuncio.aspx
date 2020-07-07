@@ -10,23 +10,23 @@
     </style>
     <div  class="jumbotron">
         <div class="container">
-            <h1 class="jumbotron-heading">Eba! Seu anuncio Foi Aceito:</h1>
+            <h1 class="jumbotron-heading">Eba! Seu anúncio foi aceito:</h1>
             <p class="lead text-muted">
-                Agora que seu Anuncio foi aceito você pode pagar seu anuncio e ativalo no site.(atualmente só aceitamos pagamentos via cartão de crédito).
+                Agora que seu anúncio foi aceito você pode pagar seu anúncio e ativá-lo no site (atualmente só aceitamos pagamentos via cartão de crédito).
             </p>
         </div>
     </div>
     <div class="text-center">
         <h3>Dados do Cartão:</h3><br />
-        <span class="alert-heading">Numero do Cartão:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="alert-heading">Codigo de Segurança:</span><br />
-        <asp:TextBox ID="txtCreditCard" runat="server" Placeholder="Cartão de Credito" Width="260px"></asp:TextBox>
+        <span class="alert-heading">Número do Cartão:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="alert-heading">Código de Segurança:</span><br />
+        <asp:TextBox ID="txtCreditCard" runat="server" Placeholder="Cartão de Crédito" Width="260px"></asp:TextBox>
         &nbsp;&nbsp;
         <asp:TextBox ID="txtCVV" runat="server" Placeholder="CVV" Width="72px"></asp:TextBox><br />
         <br />
         <span class="alert-heading">Nome:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span class="alert-heading">Data de Vencimento:</span><br />
-        <asp:TextBox ID="txtNome" runat="server" Placeholder="Nome do Proprietario" Width="214px"></asp:TextBox>
+        <asp:TextBox ID="txtNome" runat="server" Placeholder="Nome do Proprietário" Width="214px"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
         <asp:TextBox ID="txtDtMe" runat="server" Placeholder="Mês" Width="40px"></asp:TextBox>
         &nbsp;<asp:TextBox ID="txtDtye" runat="server" Placeholder="Ano" Width="39px"></asp:TextBox><br />

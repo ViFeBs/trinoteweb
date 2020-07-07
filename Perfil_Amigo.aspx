@@ -16,7 +16,7 @@
         </div>
         <br />
         <br />
-        <h1 runat="server" class="text-center">Anotações Compartilhadas Comigo:</h1>
+        <h1 runat="server" class="text-center">Anotações compartilhadas comigo:</h1>
         <br />
         <div class="jumbotron jumbotron-fluid" runat="server" id="nadaEncontrado">
         </div>
