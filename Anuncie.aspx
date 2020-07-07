@@ -12,14 +12,14 @@
         <div class="container">
             <h1 class="jumbotron-heading">Criar Login</h1>
             <p class="lead text-muted">
-                Olá anunciante, a TriNote oferece uma plataforma de anúncios simples e prática para você.
-                Basta cadastrar suas informações, adicionar um login e senha e pronto, você podera enviar propostas de anúncio
-                para o nosso site, você tambem terá acesso a uma página onde poderá ver seus anúncios ativos e propostas suas enviadas.
+                Olá anunciante! A TriNote oferece uma plataforma de anúncios simples e prática para você. <br />
+                Basta cadastrar suas informações, adicionar um login e uma senha e pronto, você poderá enviar propostas de anúncio
+                para o site. <br /> Você também terá acesso a uma página onde poderá ver seus anúncios ativos e suas propostas enviadas.
             </p>
         </div>
     </div>
     <div class="text-center">
-            <h1>Cadastrar Dado: </h1>
+            <h1>Dados Cadastrais: </h1>
             <br />
             <div runat="server" id="Visivel">
                 <asp:Label ID="Label1" runat="server" Text="Nome: "></asp:Label>

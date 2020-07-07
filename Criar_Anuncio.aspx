@@ -12,7 +12,8 @@
         <div class="container">
             <h1 class="jumbotron-heading">Proposta de Anúncio</h1>
             <p class="lead text-muted">
-                Sua proposta será enviada para avalisação, se ela for aceita você será comunicado via e-mail. Você pode ver seus anúncios na sua página inicial de anunciante, os anúncios funcionam com um sistema de tempo, quanto maior o tempo mais caro.
+                Sua proposta será enviada para avalisação, se ela for aceita você será comunicado via e-mail. <br />
+                Você pode ver seus anúncios na sua página inicial de anunciante, os anúncios funcionam com um sistema de tempo, quanto maior o tempo mais caro.
             </p>
         </div>
     </div>
@@ -20,7 +21,7 @@
         <div class="card-body">
             <h2>Exemplo de Anúncio:</h2>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/67-672874_clipart-cloud-atomic-bomb-fallout-4-guy-thumbs.png" CssClass="card-img" Width="400px" Height="300px"/><br />
-            <asp:Label ID="Label6" runat="server" Text="Exemplo Título Do anúncio" CssClass="card-title" Font-Size="Larger" color="Bold"></asp:Label><br />
+            <asp:Label ID="Label6" runat="server" Text="Exemplo de Título do Anúncio" CssClass="card-title" Font-Size="Larger" color="Bold"></asp:Label><br />
             <asp:Label ID="Label7" runat="server" Text="Algum texto de exemplo. Mais um texto de exemplo" CssClass="card-text"></asp:Label><br />
             <a href="#" class="btn btn-primary">Ver Mais</a>
         </div>

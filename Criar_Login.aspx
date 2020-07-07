@@ -17,10 +17,10 @@
         &nbsp;<asp:Label ID="Label2" runat="server" Text="Telefone: "></asp:Label>
         <asp:TextBox ID="txtTel" runat="server"></asp:TextBox><br />
         <br />
-        <asp:Label ID="Label7" runat="server" Text="E-Mail: "></asp:Label>
+        <asp:Label ID="Label7" runat="server" Text="E-mail: "></asp:Label>
         <asp:TextBox ID="txtEmail" runat="server" Width="423px"></asp:TextBox><br />
         <br />
-        <asp:Label ID="Label8" runat="server" Text="Confirmar E-Mail: "></asp:Label>
+        <asp:Label ID="Label8" runat="server" Text="Confirmar E-mail: "></asp:Label>
         <asp:TextBox ID="txtCemail" runat="server" Width="352px"></asp:TextBox><br />
         <br />
         <asp:Label ID="Label4" runat="server" Text="Login: "></asp:Label>
@@ -32,8 +32,10 @@
         <asp:Label ID="Label6" runat="server" Text="Confirmar Senha: "></asp:Label>
         <asp:TextBox ID="txtCsenha" runat="server" TextMode="Password"></asp:TextBox><br />
         <br />
-        <p>Para utilizar nosso site é necessário aceitar nossos Termos de Uso: 
-            <a href="#">Termos de Privacidade</a> e <a href="#">Termos de Uso</a><br />
+        <p>Para utilizar nosso site é necessário aceitar nossos:
+            </p>
+        <p><a href="#">Termos de Privacidade</a> e <a href="#">Termos de Uso</a></p>
+        <p>
             <asp:CheckBox ID="ChkTermos" runat="server" Text="Aceitar" />
         </p>
         <asp:Button ID="btnCad" runat="server" Text="Cadastrar" OnClick="btnCad_Click"  CssClass="btn btn-primary"/>
