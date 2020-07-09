@@ -235,5 +235,22 @@ public partial class Criar_Login : System.Web.UI.Page
         }
 
     }
-    
+
+
+    protected void txtSenha_TextChanged(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterClientScriptBlock(this, GetType(), "mykey", "checkPasswordStrength();", true);
+    }
+
+    protected void txtCsenha_TextChanged(object sender, EventArgs e)
+    {
+        if(txtSenha.Text != txtCsenha.Text)
+        {
+            txtCsenha.BackColor = System.Drawing.Color.Red;
+        }
+        else
+        {
+            txtCsenha.BackColor = System.Drawing.Color.Green;
+        }
+    }
 }

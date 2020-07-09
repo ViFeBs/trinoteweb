@@ -22,7 +22,7 @@ public partial class MasterLogSemAnuncio : System.Web.UI.MasterPage
     {
         Conexao c = new Conexao();
         c.conectar();
-        c.command.CommandText = "select loginUsuario,foto from Usuario where idUsuario = @cod";
+        c.command.CommandText = "select nomeUsuario,foto from Usuario where idUsuario = @cod";
         c.command.Parameters.Add("@cod", SqlDbType.Int).Value = ((int)Session["codigoUsuario"]);
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -41,7 +41,7 @@ public partial class MasterLogSemAnuncio : System.Web.UI.MasterPage
         string strBase64 = Convert.ToBase64String(imgBytes);
         imgPerfil.ImageUrl = "data:Images/jpg;base64," + strBase64;
         //------------------------------------------------------------------
-        lblPname.Text = dt.Tables[0].DefaultView[0].Row["loginUsuario"].ToString();
+        lblPname.Text = dt.Tables[0].DefaultView[0].Row["nomeUsuario"].ToString();
         c.fechaConexao();
     }
     public void CarregaAmigoSolicitado()
@@ -185,7 +185,23 @@ public partial class MasterLogSemAnuncio : System.Web.UI.MasterPage
                     imgBytes = (byte[])dt.Tables[0].DefaultView[i].Row["foto"];
                 }
                 string strBase64 = Convert.ToBase64String(imgBytes);
-                SolicitacoesRecebidas.InnerHtml += "<h5>Nova Solicitação de Amizade Recebida</h3><li><img src='data:Images/jpg;base64," + strBase64 + "' Width='100px' Height='80px' class='rounded-circle'/><p>" + nomeUsu + "</p><a href='Perfil_Amigo.aspx?id=" + idUsu + "&type=1' class='btn btn-primary'>Ver Perfil</a></li>";
+                //SolicitacoesRecebidas.InnerHtml += "<h5>Nova Solicitação de Amizade Recebida</h3><li><img src='data:Images/jpg;base64," + strBase64 + "' Width='100px' Height='80px' class='rounded-circle'/><p>" + nomeUsu + "</p><a href='Perfil_Amigo.aspx?id="+idUsu+"&type=1' class='btn btn-primary'>Ver Perfil</a></li>";
+                sltAmigos.InnerHtml = "<a class='btn btn-outline-success' href='Perfil_Amigo.aspx?id=" + idUsu + "&type=1'>" +
+                                        "<div class='con'>" +
+                                            "<div class='con1'>" +
+                                                "<img src = 'data:Images/jpg;base64," + strBase64 + "' class='userimg' />" +
+                                            "</div>" +
+                                            "<div class='sidebox'>" +
+                                                "<span class='spanstyle'>" +
+                                                    "<p>" + nomeUsu + "</p>" +
+                                                "</span>" +
+                                                "<div class='bottonbtn'>" +
+                                                    "<p>Nova Solicitação <br />" +
+                                                    "de Amizade</p>" +
+                                                "</div>" +
+                                            "</div>" +
+                                        "</div>" +
+                                       "<a />";
             }
         }
     }
@@ -197,8 +213,9 @@ public partial class MasterLogSemAnuncio : System.Web.UI.MasterPage
                                     "JOIN Usuario U on U.idUsuario = C.idUsuario " +
                                     "JOIN Anotacao An on An.idAnotacao = C.idAnotacao " +
                                     "JOIN Amigos A on A.idAmigo = C.idAmigo " +
-                                    "JOIN Individuo I on I.idIndividuo =  A.idIndividuo " +
-                                "Where C.idUsuario = @idUsu and C.idUsuario = I.idUsuario and A.idUsuario = @idUsuAmi and An.statusAnotacao = 1";
+                                    "JOIN Individuo I on I.idIndividuo = A.idIndividuo " +
+                                "Where I.idUsuario = @idUsu or A.idUsuario = @idUsu and " +
+                                "I.idUsuario = @idUsuAmi or A.idUsuario = @idUsuAmi and An.statusAnotacao = 1";
 
         c.command.Parameters.Add("@idUsu", SqlDbType.Int).Value = ((int)Session["codigoUsuario"]);
         c.command.Parameters.Add("@idUsuAmi", SqlDbType.Int).Value = idFriend;

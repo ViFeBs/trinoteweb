@@ -48,20 +48,15 @@
           cursor: pointer;
         }
     </style>
-    <h1 class="text-center">Minha Anotação</h1>
+    <h2 class="text-center">Minha Anotação</h2>
     <div class="text-right">
-<<<<<<< HEAD
          <asp:ImageButton ID="imgBedit" runat="server" ImageUrl="~/Images/Editar.jpg" Width="40px" Height="40px" OnClick="imgBedit_Click"/> 
          <asp:ImageButton ID="imgBdelet" runat="server" ImageUrl="~/Images/Deletar.png" Width="40px" Height="40px" OnClick="imgBdelet_Click"/>
          <asp:ImageButton ID="imgBshare" runat="server"  ImageUrl="~/Images/Compartilhar.png.jpg" Width="40px" Height="40px" OnClick="imgBshare_Click"/><br />
-=======
-         <asp:ImageButton ID="imgBedit" runat="server" ImageUrl="~/Images/Editar.jpg" Width="40px" Height="40px" OnClick="imgBedit_Click" ToolTip="Editar"/> 
-         <asp:ImageButton ID="imgBdelet" runat="server" ImageUrl="~/Images/Deletar.png" Width="40px" Height="40px" OnClick="imgBdelet_Click" ToolTip="Excluir"/>
-    <asp:ImageButton ID="imgBshare" runat="server"  ImageUrl="~/Images/Compartilhar.png.jpg" Width="40px" Height="40px" OnClick="imgBshare_Click" ToolTip="Compartilhar"/>
     </div>
     <div class="items-margin">
-        <asp:Image ID="Image1" runat="server" Width="1000" Height="500"/><br />
->>>>>>> 16cb516eaf5e540a6f44dc22e6c8a51519590cc3
+        <br />
+
         <br />
         <div id="editFont" runat="server">
             <asp:Label ID="Label3" runat="server" Text="Font: "></asp:Label>
@@ -77,24 +72,24 @@
                 <asp:ListItem>Pinyon Script</asp:ListItem>
                 <asp:ListItem>Ruge Boogie</asp:ListItem>
             </asp:DropDownList><br />
-            <asp:Label ID="lblFont" runat="server" Font-Size="12px" Text="ABCDEFGHIJKLMNOPQRSŠTUVWXYZŽ <br /> abcdefghijklmnopqrsštuvwxyzž <br /> 1234567890 <br /> ‘?’“!”(%)[#]{@}/&\<-+÷×=>®©$€£¥¢:;,.*"></asp:Label>
+            <asp:Label ID="lblFont" runat="server" ForeColor="White" Font-Size="12px" Text="ABCDEFGHIJKLMNOPQRSŠTUVWXYZŽ <br /> abcdefghijklmnopqrsštuvwxyzž <br /> 1234567890 <br /> ‘?’“!”(%)[#]{@}/&\<-+÷×=>®©$€£¥¢:;,.*"></asp:Label>
         </div>
     </div>
     <br />
     <div class="text-center">
-        <h1>Titulo:
-            <asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label>
+        <h2>Titulo:
+            <asp:Label ID="lblTitulo" runat="server" Text="" ForeColor="White"></asp:Label>
             <asp:TextBox ID="txtTitulo" runat="server"></asp:TextBox>
-        </h1><br />
+        </h2><br />
         <asp:Image ID="imgAno" runat="server" Width="1000" Height="500"/><br />
         <br />
         <p id="imgEdit" runat="server">Alterar Imagem: <asp:FileUpload ID="fupImg" runat="server" /></p>
         <h2>Conteudo:</h2>
         <div id="conteudo">
-            <asp:Label ID="lblConteudo" runat="server" Text="" CssClass="text-center"></asp:Label>
+            <asp:Label ID="lblConteudo" runat="server" Text="" CssClass="text-center" ForeColor="White"></asp:Label>
             <asp:TextBox ID="txtConteudo" runat="server" Height="166px" TextMode="MultiLine" Width="610px"></asp:TextBox>
         </div>
-        <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-outline-primary" OnClick="btnSalvar_Click" Height="44px" Width="193px"/>
+        <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-outline-light" OnClick="btnSalvar_Click" Height="44px" Width="193px"/>
         <div id="myModal" class="Boxshare" runat="server">
             <div class="share-content">
                 <asp:Button ID="btnclose" runat="server" Text="&times;" CssClass="close" OnClick="btnclose_Click"/>

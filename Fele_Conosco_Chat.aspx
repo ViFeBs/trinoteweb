@@ -6,8 +6,12 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick"></asp:Timer>
     <style>
-        .jumbotron{
+        .main{
             background-color:white;
+        }
+        .jumbotron{
+            color:white;
+            background-color:transparent;
         }
         .Alinhamento{
             padding-left: 80px;
@@ -144,7 +148,7 @@
     <div class="Alinhamento">
         <asp:TextBox ID="txtMensagem" runat="server" Placeholder="Digite Aqui Sua Mensagem" Width="663px" OnTextChanged="txtMensagem_TextChanged"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnEnviar" runat="server" Text="Enviar" CssClass="btn btn-outline-success" OnClick="btnEnviar_Click"/><br />
+        <asp:Button ID="btnEnviar" runat="server" Text="Enviar" CssClass="btn btn-outline-light" OnClick="btnEnviar_Click"/><br />
         <br />
         <div class="container">
             <div class="messaging">

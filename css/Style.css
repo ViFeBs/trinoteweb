@@ -1,4 +1,5 @@
-﻿.wrapper {
+﻿body{width: 100%;}
+.wrapper {
     display: flex;
     width: 100%; 
 }
@@ -37,6 +38,22 @@ nav p {
 
 .main{
     width:100%;
+    background-image:url("../Images/PlanoDeFundo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.main h2{
+    color:white;
+}
+
+
+
+.Elementos{
+    width: 400px;
+    padding-top:250px;
+    background-color:white;
+    margin:auto;
 }
 
 

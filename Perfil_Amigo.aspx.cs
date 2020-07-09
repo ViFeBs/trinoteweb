@@ -16,15 +16,18 @@ public partial class Perfil_Amigo : System.Web.UI.Page
         if(tipo == 0)
         {
             btnAdicionar.Text = "Enviar Solicitação de Amizade";
+            anoAmigo.Visible = false;
         }
         else if(tipo == 1)
         {
             btnAdicionar.Text = "Aceitar Solicitação";
+            anoAmigo.Visible = false;
         }
         else if(tipo == 2)
         {
             btnAdicionar.Visible = false;
-            CarregaCompartilhadas(); 
+            CarregaCompartilhadasSolicitado();
+            CarregaCompartilhadasAceitos();
         }
         Conexao c = new Conexao();
         c.conectar();
@@ -88,7 +91,7 @@ public partial class Perfil_Amigo : System.Web.UI.Page
         Response.Redirect("HomeLog.aspx");
     }
 
-    public void CarregaCompartilhadas()
+    public void CarregaCompartilhadasSolicitado()
     {
         Conexao c = new Conexao();
         c.conectar();
@@ -97,7 +100,8 @@ public partial class Perfil_Amigo : System.Web.UI.Page
                                                                                 "JOIN Amigos AMI on C.idAmigo = AMI.idAmigo " +
                                                                                 "JOIN Individuo I on AMI.idIndividuo = I.idIndividuo " +
                                                                                 "JOIN Usuario U on I.idUsuario = U.idUsuario " +
-                                                                          "where I.idUsuario = @id and A.statusAnotacao = 1";
+                                                                          "where I.idUsuario = @id and Ami.idUsuario = @idUsu and A.statusAnotacao = 1 and A.usuarioCria != @idUsu";
+        c.command.Parameters.Add("@idUsu", SqlDbType.Int).Value = (int)Session["codigoUsuario"];
         c.command.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(Request.QueryString["id"]);
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -123,7 +127,7 @@ public partial class Perfil_Amigo : System.Web.UI.Page
                     Fonte = dt.Tables[0].DefaultView[i].Row["Font"].ToString();
                 }
                 string anunAtual = "<div class='card'><style>.card-img-top{width='100%'; height: 225;} #id" + i + "{font-family:" + Fonte + "} #idt" + i + "{font-family:" + Fonte + "}</style><img src='data:Images/jpg;base64," + strBase64 + "'class='card-img-top'/><div class='card-body'><h1 class='card-title' id='idt" + i + "'>" + Titulo + "</h1><br /><p class='card-text' id='id" + i + "'>" + conteudo + "</p><br /><a href = 'Anotacao_Compartilhada.aspx?id=" + id + "' class='btn btn-primary'>Ver Mais</a></div></div>";
-                GeraAnotacao.InnerHtml += anunAtual;
+                GeraAnotacaoAmigo.InnerHtml += anunAtual;
             }
             nadaEncontrado.Visible = false;
         }
@@ -135,7 +139,54 @@ public partial class Perfil_Amigo : System.Web.UI.Page
                                         "</div>";
         }
     }
-
+    public void CarregaCompartilhadasAceitos()
+    {
+        Conexao c = new Conexao();
+        c.conectar();
+        c.command.CommandText = "select A.idAnotacao,A.usuarioCria,A.titulo,A.conteudo,A.Font,A.Imagem,A.statusAnotacao,U.loginUsuario from Anotacao_Compartilhada C " +
+                                                                                "JOIN Anotacao A on C.idAnotacao = A.idAnotacao " +
+                                                                                "JOIN Amigos AMI on C.idAmigo = AMI.idAmigo " +
+                                                                                "JOIN Individuo I on AMI.idIndividuo = I.idIndividuo " +
+                                                                                "JOIN Usuario U on I.idUsuario = U.idUsuario " +
+                                                                          "where I.idUsuario = @idUsu and Ami.idUsuario = @id and A.statusAnotacao = 1 and A.usuarioCria != @idUsu";
+        c.command.Parameters.Add("@idUsu", SqlDbType.Int).Value = (int)Session["codigoUsuario"];
+        c.command.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(Request.QueryString["id"]);
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
+        int qtde = dt.Tables[0].DefaultView.Count;
+        if (qtde >= 1)
+        {
+            for (int i = 0; i < qtde; i++)
+            {
+                string Titulo = dt.Tables[0].DefaultView[i].Row["titulo"].ToString();
+                string conteudo = dt.Tables[0].DefaultView[i].Row["conteudo"].ToString();
+                byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[i].Row["Imagem"];
+                string strBase64 = Convert.ToBase64String(imgBytes);
+                string id = dt.Tables[0].DefaultView[i].Row["idAnotacao"].ToString();
+                string Fonte = "";
+                if (dt.Tables[0].DefaultView[i].Row["Font"].ToString() == "")
+                {
+                    Fonte = "'Arial'";
+                }
+                else
+                {
+                    Fonte = dt.Tables[0].DefaultView[i].Row["Font"].ToString();
+                }
+                string anunAtual = "<div class='card'><style>.card-img-top{width='100%'; height: 225;} #id" + i + "{font-family:" + Fonte + "} #idt" + i + "{font-family:" + Fonte + "}</style><img src='data:Images/jpg;base64," + strBase64 + "'class='card-img-top'/><div class='card-body'><h1 class='card-title' id='idt" + i + "'>" + Titulo + "</h1><br /><p class='card-text' id='id" + i + "'>" + conteudo + "</p><br /><a href = 'Anotacao_Compartilhada.aspx?id=" + id + "' class='btn btn-primary'>Ver Mais</a></div></div>";
+                GeraAnotacaoAmigo.InnerHtml += anunAtual;
+            }
+            nadaEncontrado.Visible = false;
+        }
+        else
+        {
+            nadaEncontrado.InnerHtml = "<div class='container'>" +
+                                            "<h1 class='display-4'>Não encontramos nenhuma anotação<i class='fas fa-sad-tear'></i></h1>" +
+                                            "<p class='lead'>Seu Amigo ainda não compartilhou nada com você</p>" +
+                                        "</div>";
+        }
+    }
     public void EnviarSolicitacao()
     {
         Conexao c = new Conexao();

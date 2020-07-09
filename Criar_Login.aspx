@@ -3,6 +3,91 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+    <script type="text/javascript">
+        function checkPasswordEquals() {
+            document.getElementById("<%= txtCsenha.ClientID %>").style.color = "white";
+
+            if (document.getElementById("<%= txtSenha.ClientID %>").value != document.getElementById("<%= txtCsenha.ClientID %>").value) {
+
+                document.getElementById("<%= txtCsenha.ClientID %>").style.backgroundColor = "red";
+
+            }
+            else {
+
+                document.getElementById("<%= txtCsenha.ClientID %>").style.backgroundColor = "green";
+
+            }
+        }
+        function checkPasswordStrength() 
+        {
+            var password = document.getElementById("<%= txtSenha.ClientID %>").value;
+            var specialCharacters = "!£$%^&*_@#~?";
+            var passwordScore = 0;
+
+            document.getElementById("<%= txtSenha.ClientID %>").style.color = "white";
+
+            // Contains special characters
+            for (var i = 0; i < password.length; i++) 
+            {
+                if (specialCharacters.indexOf(password.charAt(i)) > -1) 
+                {
+                    passwordScore += 20;
+                    break;
+                }
+            }
+
+            // Contains numbers
+            if (/\d/.test(password))
+                passwordScore += 20;
+
+            // Contains lower case letter
+            if (/[a-z]/.test(password))
+                passwordScore += 20;
+
+            // Contains upper case letter
+            if (/[A-Z]/.test(password))
+                passwordScore += 20;
+
+            if (password.length >= 8) {
+                passwordScore += 20;
+            }
+
+            var strength = "";
+            var backgroundColor = "red";
+
+            if (passwordScore >= 100) 
+            {
+                strength = "Strong";
+                backgroundColor = "green";
+            }
+            else if (passwordScore >= 80) 
+            {
+                        strength = "Medium";
+                backgroundColor = "gray";
+            }
+            else if (passwordScore >= 60) 
+            {
+                    strength = "Weak";
+            backgroundColor = "maroon";
+            }
+            else 
+            {
+                strength = "Very Weak";
+                backgroundColor = "red";
+            }
+
+            document.getElementById("<%= lblMessage.ClientID %>").innerHTML = strength;
+            document.getElementById("<%= txtSenha.ClientID %>").style.backgroundColor = backgroundColor;
+        }
+    </script>
     <div class="text-center">
         <br />
         <br />
@@ -27,10 +112,12 @@
         <asp:TextBox ID="txtLog" runat="server"></asp:TextBox><br />
         <br />
         <asp:Label ID="Label5" runat="server" Text="Senha: "></asp:Label>
-        <asp:TextBox ID="txtSenha" runat="server" TextMode="Password"></asp:TextBox><br />
+        <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" OnTextChanged="txtSenha_TextChanged" onKeyup="checkPasswordStrength()"></asp:TextBox>
+        <a href="#" data-toggle="popover" data-trigger="focus" title="Senhas Devem Conter:" data-content="letras,numeros e um Caractere Especial"><i class="fas fa-info-circle"></i></a>
+        <asp:Label ID="lblMessage" runat="server" Text="..."></asp:Label><br />
         <br />
         <asp:Label ID="Label6" runat="server" Text="Confirmar Senha: "></asp:Label>
-        <asp:TextBox ID="txtCsenha" runat="server" TextMode="Password"></asp:TextBox><br />
+        <asp:TextBox ID="txtCsenha" runat="server" TextMode="Password" OnTextChanged="txtCsenha_TextChanged" onKeyup="checkPasswordEquals()"></asp:TextBox><br />
         <br />
         <p>Para utilizar nosso site é necessário aceitar nossos:
             </p>

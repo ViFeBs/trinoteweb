@@ -42,16 +42,8 @@
                 </p>
                 <div id="lstAmigos" runat="server">
                 </div>
-                <ul class="list-unstyled components" id="SolicitacoesRecebidas" runat="server">
-                      
-                </ul>
-                <ul class="list-unstyled components" id="friendlist" runat="server">
-                      
-                </ul>
-                <ul class="list-unstyled components" id="SolicitacoesEnviadas" runat="server">
-                      
-                </ul>
-                
+                <div id="sltAmigos" runat="server">
+                </div>    
             </nav>
         
             <main class="main">
