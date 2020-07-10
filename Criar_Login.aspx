@@ -113,7 +113,7 @@
         <br />
         <asp:Label ID="Label5" runat="server" Text="Senha: "></asp:Label>
         <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" OnTextChanged="txtSenha_TextChanged" onKeyup="checkPasswordStrength()"></asp:TextBox>
-        <a href="#" data-toggle="popover" data-trigger="focus" title="Senhas Devem Conter:" data-content="letras,numeros e um Caractere Especial"><i class="fas fa-info-circle"></i></a>
+        <a href="#" data-toggle="popover" data-trigger="focus" title="Senhas devem conter:" data-content="Letras, números e um caracterer especial."><i class="fas fa-info-circle"></i></a>
         <asp:Label ID="lblMessage" runat="server" Text="..."></asp:Label><br />
         <br />
         <asp:Label ID="Label6" runat="server" Text="Confirmar Senha: "></asp:Label>
