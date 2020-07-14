@@ -38,7 +38,8 @@ nav p {
 
 .main{
     width:100%;
-    background-image:url("../Images/PlanoDeFundo.jpg");
+    background-color: #66ccff;
+    background-image: linear-gradient(to bottom right, #0066ff, #99ff99);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
