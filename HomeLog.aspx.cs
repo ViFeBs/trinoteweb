@@ -39,7 +39,15 @@ public partial class HomeLog : System.Web.UI.Page
                     dAdapter.Fill(dt2);
                     string Titulo = dt2.Tables[0].DefaultView[i].Row["titulo"].ToString();
                     string conteudo = dt2.Tables[0].DefaultView[i].Row["conteudo"].ToString();
-                    byte[] imgBytes = (byte[])dt2.Tables[0].DefaultView[i].Row["Imagem"];
+                    byte[] imgBytes;
+                    if (dt2.Tables[0].DefaultView[i].Row["Imagem"] == DBNull.Value)
+                    {
+                        imgBytes = BitConverter.GetBytes(0);
+                    }
+                    else
+                    {
+                        imgBytes = (byte[])dt2.Tables[0].DefaultView[i].Row["Imagem"];
+                    }
                     string strBase64 = Convert.ToBase64String(imgBytes);
                     string id = dt2.Tables[0].DefaultView[i].Row["idAnotacao"].ToString();
                     string Fonte = "";
@@ -65,7 +73,15 @@ public partial class HomeLog : System.Web.UI.Page
                     dAdapter.Fill(dt2);
                     string Titulo = dt2.Tables[0].DefaultView[i].Row["titulo"].ToString();
                     string conteudo = dt2.Tables[0].DefaultView[i].Row["conteudo"].ToString();
-                    byte[] imgBytes = (byte[])dt2.Tables[0].DefaultView[i].Row["Imagem"];
+                    byte[] imgBytes;
+                    if (dt.Tables[0].DefaultView[i].Row["Imagem"] == DBNull.Value)
+                    {
+                        imgBytes = BitConverter.GetBytes(0);
+                    }
+                    else
+                    {
+                        imgBytes = (byte[])dt.Tables[0].DefaultView[i].Row["Imagem"];
+                    }
                     string strBase64 = Convert.ToBase64String(imgBytes);
                     string id = dt2.Tables[0].DefaultView[i].Row["idAnotacao"].ToString();
                     string Fonte = "";

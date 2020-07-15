@@ -12,9 +12,6 @@ public class Conexao
 {
     public SqlConnection conexao;
     public SqlCommand command;
-    //string strConexao = "Server=localhost;DataBase=TrinoteTeste;user id=sa;password=teste@123";
-    //string strConexao = "Server=localhost;DataBase=TrinoteTeste;user id=sa;password=123456";
-    //string strConexao = "Server=localhost;DataBase=TrinoteTeste;user id=sa;password=etesp";
     string strConexao = "Server=trinotebd.database.windows.net;DataBase=Trinote;user id=TrinoteBd;password=b3@gk2040";
     //string strConexao = "Server=TriNote.mssql.somee.com;DataBase=TriNote;user id=Brunno19_SQLLogin_1;password=nv3avw4tzp";
     //string strConexao = "Server=localhost;DataBase=Trinote;trusted_connection=true";

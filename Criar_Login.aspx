@@ -65,22 +65,22 @@
 
             if (passwordScore >= 100) 
             {
-                strength = "Strong";
+                strength = "Forte";
                 backgroundColor = "green";
             }
             else if (passwordScore >= 80) 
             {
-                        strength = "Medium";
+                        strength = "Mediana";
                 backgroundColor = "gray";
             }
             else if (passwordScore >= 60) 
             {
-                    strength = "Weak";
+                    strength = "Fraca";
             backgroundColor = "maroon";
             }
             else 
             {
-                strength = "Very Weak";
+                strength = "Muito Fraca";
                 backgroundColor = "red";
             }
 

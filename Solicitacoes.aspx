@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <style>
         .jumbotron{
-            background-color:white;
+            background-color:transparent;
         }
         .Alinhamento{
             margin-left:50px;

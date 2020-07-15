@@ -36,7 +36,15 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
         DataSet dt = new DataSet();
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
-        byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
+        byte[] imgBytes;
+        if (dt.Tables[0].DefaultView[0].Row["Imagem"] == DBNull.Value)
+        {
+            imgBytes = BitConverter.GetBytes(0);
+        }
+        else
+        {
+            imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
+        }
         string strBase64 = Convert.ToBase64String(imgBytes);
         imgAno.ImageUrl = "data:Images/jpg;base64," + strBase64;
         lblTitulo.Text = dt.Tables[0].DefaultView[0].Row["titulo"].ToString();
@@ -62,8 +70,15 @@ public partial class Visualiza_Anotacao : System.Web.UI.Page
         DataSet dt = new DataSet();
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
-
-        byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
+        byte[] imgBytes;
+        if (dt.Tables[0].DefaultView[0].Row["Imagem"] == DBNull.Value)
+        {
+            imgBytes = BitConverter.GetBytes(0);
+        }
+        else
+        {
+            imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
+        }
         string strBase64 = Convert.ToBase64String(imgBytes);
         imgAno.ImageUrl = "data:Images/jpg;base64," + strBase64;
 

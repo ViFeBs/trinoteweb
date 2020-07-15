@@ -21,7 +21,15 @@ public partial class Anotacao_Compartilhada : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        byte[] imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
+        byte[] imgBytes;
+        if (dt.Tables[0].DefaultView[0].Row["Imagem"] == DBNull.Value)
+        {
+            imgBytes = BitConverter.GetBytes(0);
+        }
+        else
+        {
+            imgBytes = (byte[])dt.Tables[0].DefaultView[0].Row["Imagem"];
+        }
         string strBase64 = Convert.ToBase64String(imgBytes);
         imgAnotacao.ImageUrl = "data:Images/jpg;base64," + strBase64;
 
