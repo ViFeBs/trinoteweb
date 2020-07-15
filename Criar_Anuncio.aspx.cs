@@ -47,17 +47,17 @@ public partial class Criar_Anuncio : System.Web.UI.Page
             string Titulo = txtTitulo.Text, Link = txtLink.Text, Anuncio = txtAnuncio.Text;
             DateTime termino = DateTime.Now;
             decimal valor = 0;
-            if (DropDownList1.SelectedValue == "1 Semana $30 Reais")
+            if (DropDownList1.SelectedValue == "1 Semana R$30 Reais")
             {
                 termino = termino.AddDays(7);
                 valor = 30;
             }
-            else if (DropDownList1.SelectedValue == "1 Mês $100 Reais")
+            else if (DropDownList1.SelectedValue == "1 Mês R$100 Reais")
             {
                 termino = termino.AddMonths(1);
                 valor = 100;
             }
-            else if (DropDownList1.SelectedValue == "1 Mês $100 Reais")
+            else if (DropDownList1.SelectedValue == "1 Mês R$100 Reais")
             {
                 termino = termino.AddYears(1);
                 valor = 1000;
