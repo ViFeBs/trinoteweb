@@ -57,7 +57,7 @@ public partial class Criar_Anuncio : System.Web.UI.Page
                 termino = termino.AddMonths(1);
                 valor = 100;
             }
-            else if (DropDownList1.SelectedValue == "1 Mês R$100 Reais")
+            else if (DropDownList1.SelectedValue == "1 Ano R$1000,00 Reais")
             {
                 termino = termino.AddYears(1);
                 valor = 1000;
